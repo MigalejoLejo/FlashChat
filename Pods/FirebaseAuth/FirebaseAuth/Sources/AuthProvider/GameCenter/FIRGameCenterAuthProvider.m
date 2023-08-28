@@ -73,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
         }
       } else {
         FIRGameCenterAuthCredential *credential =
-            [[FIRGameCenterAuthCredential alloc] initWithPlayerID:localPlayer.teamPlayerID
+            [[FIRGameCenterAuthCredential alloc] initWithPlayerID:localPlayer.playerID
                                                      teamPlayerID:localPlayer.teamPlayerID
                                                      gamePlayerID:localPlayer.gamePlayerID
                                                      publicKeyURL:publicKeyURL
