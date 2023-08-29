@@ -14,6 +14,7 @@ class ChatViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextfield: UITextField!
+    var scrollAnimation: Bool = false
     
     let db = Firestore.firestore()
     
@@ -57,6 +58,7 @@ class ChatViewController: UIViewController {
                 }
             }
         }
+      
     }
     
     @IBAction func logoutPressed(_ sender: UIBarButtonItem) {
@@ -93,12 +95,17 @@ class ChatViewController: UIViewController {
 
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
+                            let indexPath = IndexPath(row: self.messages.count-1, section: 0)
+                            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: self.scrollAnimation)
+                            if !self.scrollAnimation {
+                                self.scrollAnimation = true
+                            }
                         }
-
                     }
                 }
             }
         }
+        
     }
 }
 
